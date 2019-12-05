@@ -4,7 +4,7 @@ Version: 0.0.1.0
 Authors@R: 
     person(given = "Matthew",
            family = "Parker",
-           role = c("aut"),
+           role = c("aut", "cre"),
            email = "mrparker909@gmail.com")
 Description: Fits classic multivariate linear regression models and computes model statistics.
 License: 
