@@ -17,6 +17,7 @@ calcWilks <- function(E,H) {
 #' Y = cbind(y1,y2)
 #' X = cbind(x1,x2)
 #' wilksLambdaTest(lm(Y~X), n_adj=3)
+#' @export
 wilksLambdaTest <- function(lm_mod, lm_nullmod=NULL, n_adj=0) {
   if(is.null(lm_nullmod)) {
     lm_nullmod = lm(lm_mod$model$Y~1)
