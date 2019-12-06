@@ -20,6 +20,9 @@ mvregress <- function(X, Y, ...) {
   # TODO: replace lm with likelihood optimization algorithm
   mod = lm(formula = Y~X, ...)
   sm = summary(mod)
+  if(is.null(dim(X))) {
+    X = cbind(X)
+  }
   k=ncol(X)+1
   N=nrow(mod$residuals)
   p=ncol(mod$residuals)
