@@ -20,7 +20,7 @@ mvregress <- function(X, Y, ...) {
   # TODO: replace lm with likelihood optimization algorithm
   mod = lm(formula = Y~X, ...)
   sm = summary(mod)
-  k=ncol(X)
+  k=ncol(X)+1
   N=nrow(mod$residuals)
   p=ncol(mod$residuals)
   LL = logLikMVR(mod)

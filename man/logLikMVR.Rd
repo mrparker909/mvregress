@@ -4,7 +4,7 @@
 \alias{logLikMVR}
 \title{logLikMVR}
 \usage{
-logLikMVR(lm_mod)
+logLikMVR(lm_mod, n_adj = 0)
 }
 \arguments{
 \item{lm_mod}{a linear model fit using lm.}

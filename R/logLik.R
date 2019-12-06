@@ -15,13 +15,13 @@
 #' logLikMVR(lm(Y~X))
 #' logLikMVR(lm(Y~1))
 #' @export
-logLikMVR <- function(lm_mod) {
+logLikMVR <- function(lm_mod, n_adj=0) {
   E  <- lm_mod$residuals
-  n  <- nrow(E)
+  n  <- nrow(E)-n_adj
   p  <- ncol(E)
   S  <- cov(E)
   Si <- solve(S)
-  LL <- -(0.5)*( n*p * log(2*pi) - n * log(det(S)) - sum(diag(Si %*% t(E) %*% E)))
-  # LL = -0.5*(n*log(det(S)) + n*p*(log(2*pi)+1))
+  # LL <- -(0.5)*( n*p * log(2*pi) - n * log(det(S)) - sum(diag(Si %*% t(E) %*% E)))
+  LL <- -0.5*(n*log(det(S)) + n*p*(log(2*pi)+1))
   return(LL)
 }
