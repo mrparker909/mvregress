@@ -16,11 +16,13 @@ calcWilks <- function(E,H) {
 #' y2 = rnorm(500)
 #' A = cbind(y1,y2)
 #' B = cbind(x1,x2)
-#' wilksLambdaTest(lm(A~B), n_adj=100)
+#' wilksLambdaTest(lm(A~B), n_adj=200)
 #' @export
 wilksLambdaTest <- function(lm_mod, lm_nullmod=NULL, n_adj=0) {
+  
   Ymod=lm_mod$model[[names(lm_mod$model)[1]]]
   Xmod=lm_mod$model[[names(lm_mod$model)[2]]]
+  if(is.null(dim(Xmod))) { Xmod = cbind(Xmod) }
   
   if(is.null(lm_nullmod)) {
     lm_nullmod = lm(Ymod~1)
