@@ -17,11 +17,11 @@ wilksLambdaTest(lm_mod, lm_nullmod = NULL, n_adj = 0)
 Performs Wilks likelihood ratio test on the multivariate regression model lm_mod versus the null hypothesis model lm_nullmod. Note that if n_adj=0 (the default) then the return values pval and pvalAdj will be the same. Otherwise, pval will be the unadjusted pvalue (full degrees of freedom), and pvalAdj will be the adjusted pvalue (reduced degrees of freedom). Data matrices should be named X for the covariates, and Y for the responses.
 }
 \examples{
-x1 = rnorm(10)
-x2 = rnorm(10)
-y1 = rnorm(10)
-y2 = rnorm(10)
+x1 = rnorm(500)
+x2 = rnorm(500)
+y1 = rnorm(500)
+y2 = rnorm(500)
 Y = cbind(y1,y2)
 X = cbind(x1,x2)
-wilksLambdaTest(lm(Y~X), n_adj=3)
+wilksLambdaTest(lm(Y~X), n_adj=100)
 }

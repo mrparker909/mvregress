@@ -10,13 +10,13 @@ calcWilks <- function(E,H) {
 #' @param lm_nullmod fitted model (eg: lm(Y~1)) corresponding to the null hypothesis, default is lm(Y~1) when lm_nullmod==NULL.
 #' @param n_adj default=0, subtracted from the error degrees of freedom (for example, may be used to correct for previous testing done on the data).
 #' @examples 
-#' x1 = rnorm(10)
-#' x2 = rnorm(10)
-#' y1 = rnorm(10)
-#' y2 = rnorm(10)
+#' x1 = rnorm(500)
+#' x2 = rnorm(500)
+#' y1 = rnorm(500)
+#' y2 = rnorm(500)
 #' Y = cbind(y1,y2)
 #' X = cbind(x1,x2)
-#' wilksLambdaTest(lm(Y~X), n_adj=3)
+#' wilksLambdaTest(lm(Y~X), n_adj=100)
 #' @export
 wilksLambdaTest <- function(lm_mod, lm_nullmod=NULL, n_adj=0) {
   if(is.null(lm_nullmod)) {
