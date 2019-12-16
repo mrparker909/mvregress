@@ -17,11 +17,44 @@ wilksLambdaTest(lm_mod, lm_nullmod = NULL, n_adj = 0)
 Performs Wilks likelihood ratio test on the multivariate regression model lm_mod versus the null hypothesis model lm_nullmod. Note that if n_adj=0 (the default) then the return values pval and pvalAdj will be the same. Otherwise, pval will be the unadjusted pvalue (full degrees of freedom), and pvalAdj will be the adjusted pvalue (reduced degrees of freedom).
 }
 \examples{
-x1 = rnorm(500)
-x2 = rnorm(500)
-y1 = rnorm(500)
-y2 = rnorm(500)
+
+lam = NULL
+pval = NULL
+for(i in 1:1000) {
+x1 = rnorm(100)
+x2 = rnorm(100)
+y1 = rnorm(100)
+y2 = rnorm(100)
 A = cbind(y1,y2)
 B = cbind(x1,x2)
-wilksLambdaTest(lm(A~B), n_adj=100)
+wi = wilksLambdaTest(lm(A~B), n_adj=0)
+lam = c(lam, wi$lambda)
+pval = c(pval, wi$pval)
+}
+
+hist(lam, freq=F, breaks=100)
+curve(dchisq(x, wi$chisq_df), 0, max(lam), lwd=2, xlab = "", ylab = "", add = T)
+hist(pval, freq=F, breaks=100)
+
+lam = NULL
+pval = NULL
+for(i in 1:1000) {
+x1 = rnorm(100)
+x2 = rnorm(100)
+y1 = rnorm(100)
+y2 = rnorm(100)
+y3 = rnorm(100)
+y4 = rnorm(100)
+y5 = rnorm(100)
+y6 = rnorm(100)
+A = cbind(y1,y2,y3,y4,y5,y6)
+B = cbind(x1,x2)
+wi = wilksLambdaTest(lm(A~B), n_adj=0)
+lam = c(lam, wi$lambda)
+pval = c(pval, wi$pval)
+}
+
+hist(lam, freq=F, breaks=100)
+curve(dchisq(x, wi$chisq_df), 0, max(lam), lwd=2, xlab = "", ylab = "", add = T)
+hist(pval, freq=F, breaks=100)
 }

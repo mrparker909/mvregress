@@ -25,10 +25,10 @@ mvregress <- function(X, Y, ...) {
   }
   k=ncol(X)+1
   N=nrow(mod$residuals)
-  p=ncol(mod$residuals)
+  p=ncol(Y)
   LL = logLikMVR(mod)
   nmod = lm(Y~1)
-  LRT = likelihoodRatioTest(logLikMVR(nmod), LL, k-1)
+  LRT = likelihoodRatioTest(logLikMVR(nmod), LL, k*p-1)
   pval=LRT$pvalue
   LRTstatistic = LRT$statistic
   

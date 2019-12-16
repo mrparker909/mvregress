@@ -13,12 +13,13 @@
 #' x2 = x1^2-x1
 #' X = cbind(x1,x2)
 #' 
-#' LL_H1 = logLikMVR(lm(Y~X)) # here degrees of freedom is 3
-#' LL_H0 = logLikMVR(lm(Y~1)) # here degrees of freedom is 1
-#' likelihoodRatioTest(LL_H0, LL_H1, df=3-1)
+#' LL_H1 = logLikMVR(lm(Y~X)) # here degrees of freedom is 3*2 = 6
+#' LL_H0 = logLikMVR(lm(Y~1)) # here degrees of freedom is 1*2 = 2
+#' likelihoodRatioTest(LL_H0, LL_H1, df=6-2)
 #' @export
 likelihoodRatioTest <- function(logLik_H0, logLik_H1, df) {
   # test statistic is -2*log(Likelihood H0 / Likelihood H1) ~ chisq(df)
   statistic = -2 * (logLik_H0 - logLik_H1)
-  return(list(statistic=statistic, pvalue = pchisq(q=statistic, df=df, lower.tail = F)))
+  return(list(statistic=statistic, 
+              pvalue = pchisq(q=statistic, df=df, lower.tail = F)))
 }

@@ -22,6 +22,12 @@ logLikMVR <- function(lm_mod, n_adj=0) {
   S  <- cov(E)
   Si <- solve(S)
   LL <- -(0.5)*( n*p * log(2*pi) + n * log(det(S)) + sum(diag(Si %*% t(E) %*% E)))
+  # su = 0
+  # for(i in 1:nrow(E)) {
+  #   su = su + t(E[i,]) %*% Si %*% E[i,]
+  # }
+  # LL <- -(0.5)*( n*p * log(2*pi) + n * log(det(S)) + su)
+  
   #LL <- -(0.5)*(n*log(det(S)) + n*p*(log(2*pi)+1))
   return(LL)
 }
